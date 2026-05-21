@@ -1,0 +1,5 @@
+interface:
+  display_name: "Pink Starfish Pet"
+  short_description: "Install a bundled pink starfish Codex desktop pet."
+  brand_color: "#FA8CA0"
+  default_prompt: "Use $pink-starfish-pet to install the bundled pink starfish desktop pet."

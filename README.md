@@ -2,52 +2,74 @@
 
 [English](#english) | [中文](#中文)
 
-![Pink Starfish preview](assets/spritesheet.webp)
+![Pink Starfish preview](codex/assets/spritesheet.webp)
 
 ## English
 
-A cozy Codex skill that installs a bundled sleepy pink starfish desktop pet.
+A cozy pink starfish desktop pet packaged for both Codex and Claude Code workflows.
 
-This repository packages a ready-to-use Codex desktop pet with a soft cartoon
-spritesheet, a small installer, and the skill metadata needed for Codex to
-recognize it.
+This repository contains two installable variants:
 
-### What Is Included
+- `codex/` - Codex pet skill and installer
+- `claude-code/` - Claude Code skill that bundles the same pet assets
 
-- `SKILL.md` - Codex skill instructions
-- `agents/openai.yaml` - Codex UI metadata
-- `assets/pet.json` - Pet manifest
-- `assets/spritesheet.webp` - Animated pet spritesheet
-- `scripts/install_pet.py` - Local installer
+The pet is an original, generic pink starfish desktop companion with a transparent
+animated spritesheet.
 
-### Install
+### Repository Layout
 
-Clone or download this repository, then run:
+```text
+pink-starfish-pet/
+  README.md
+  codex/
+    SKILL.md
+    agents/openai.yaml
+    assets/pet.json
+    assets/spritesheet.webp
+    scripts/install_pet.py
+  claude-code/
+    SKILL.md
+    assets/pet.json
+    assets/spritesheet.webp
+    references/pet-format.md
+    scripts/install_skill.py
+```
+
+### Install For Codex
+
+From the repository root:
 
 ```bash
+cd codex
 python scripts/install_pet.py
 ```
 
-The installer copies the pet into:
+This installs the pet into:
 
 ```text
 ${CODEX_HOME:-~/.codex}/pets/pink-starfish/
 ```
 
-After installing, switch pets or restart Codex if the new pet does not appear
-immediately.
+If Codex already had a pet loaded, switch pets or restart Codex to refresh cached sprites.
 
-### Custom Codex Home
+### Install For Claude Code
 
-```bash
-python scripts/install_pet.py --codex-home /path/to/.codex
-```
-
-Preview the target paths without copying files:
+From the repository root:
 
 ```bash
-python scripts/install_pet.py --dry-run
+cd claude-code
+python scripts/install_skill.py
 ```
+
+This installs the Claude Code skill into:
+
+```text
+${CLAUDE_HOME:-~/.claude}/skills/pink-starfish-pet/
+```
+
+Claude Code skills do not currently define a universal desktop-pet runtime. The
+Claude Code variant bundles the pet assets so Claude can inspect, copy, package,
+or adapt them for compatible downstream tooling.
 
 ### Pet Details
 
@@ -55,56 +77,77 @@ python scripts/install_pet.py --dry-run
 - Display name: `Pink Starfish`
 - Atlas size: `1536x1872`
 - Cell size: `192x208`
-- Format: lossless WebP with transparency
+- Format: transparent lossless WebP
 
-### Notes
+### Public Use Notes
 
-This is an original, generic pink starfish desktop pet package for personal
-Codex customization. It does not include official logos, screenshots, names,
-quotes, or other branded assets.
+This package uses generic pink starfish naming and does not include official logos,
+screenshots, names, quotes, or other branded materials.
 
 ## 中文
 
-这是一个用于 Codex 的粉色海星桌面宠物 skill。它包含已经制作好的动画
-spritesheet、安装脚本，以及让 Codex 识别这个 pet 所需的 skill 元数据。
+这是一个粉色海星桌面宠物资源仓库，同时提供 Codex 和 Claude Code 两个版本。
 
-### 包含内容
+仓库包含两个可安装目录：
 
-- `SKILL.md` - Codex skill 说明
-- `agents/openai.yaml` - Codex UI 元数据
-- `assets/pet.json` - pet 配置文件
-- `assets/spritesheet.webp` - 动画 spritesheet
-- `scripts/install_pet.py` - 本地安装脚本
+- `codex/` - Codex pet skill 和安装脚本
+- `claude-code/` - Claude Code skill，内置同一套 pet 资源
 
-### 安装
+这个 pet 是原创的通用粉色海星桌面伙伴，使用带透明通道的动画 spritesheet。
 
-克隆或下载这个仓库后，在仓库根目录运行：
+### 仓库结构
+
+```text
+pink-starfish-pet/
+  README.md
+  codex/
+    SKILL.md
+    agents/openai.yaml
+    assets/pet.json
+    assets/spritesheet.webp
+    scripts/install_pet.py
+  claude-code/
+    SKILL.md
+    assets/pet.json
+    assets/spritesheet.webp
+    references/pet-format.md
+    scripts/install_skill.py
+```
+
+### 安装到 Codex
+
+在仓库根目录运行：
 
 ```bash
+cd codex
 python scripts/install_pet.py
 ```
 
-安装脚本会把 pet 复制到：
+默认安装到：
 
 ```text
 ${CODEX_HOME:-~/.codex}/pets/pink-starfish/
 ```
 
-如果安装后没有立刻显示，可以在 Codex 里切换 pet，或者重启 Codex 来刷新缓存。
+如果安装后没有立刻显示，可以在 Codex 里切换 pet，或者重启 Codex 刷新缓存。
 
-### 自定义 Codex Home
+### 安装到 Claude Code
 
-如果你想安装到指定的 Codex 目录：
-
-```bash
-python scripts/install_pet.py --codex-home /path/to/.codex
-```
-
-只预览安装路径、不复制文件：
+在仓库根目录运行：
 
 ```bash
-python scripts/install_pet.py --dry-run
+cd claude-code
+python scripts/install_skill.py
 ```
+
+默认安装到：
+
+```text
+${CLAUDE_HOME:-~/.claude}/skills/pink-starfish-pet/
+```
+
+Claude Code skill 目前没有统一的桌面宠物运行时规范。Claude Code 版本会把 pet
+资源打包进 skill，方便 Claude 查看、复制、再打包，或适配到其他兼容工具。
 
 ### Pet 信息
 
@@ -114,12 +157,10 @@ python scripts/install_pet.py --dry-run
 - 单元格尺寸：`192x208`
 - 格式：带透明通道的 lossless WebP
 
-### 说明
+### 公开使用说明
 
-这是一个原创的通用粉色海星桌面宠物包，用于个人 Codex 自定义。仓库不包含官方
-logo、截图、角色名称、台词或其他品牌素材。
+这个仓库使用通用粉色海星命名，不包含官方 logo、截图、角色名称、台词或其他品牌素材。
 
 ## License
 
-Choose the license that fits how you want others to use the pet before making
-the repository public.
+Choose a license before publishing the repository publicly.
